@@ -12609,12 +12609,12 @@ C:\Users\Maria Jose- Javier\Anaconda3\lib\site-packages\sklearn\base.py:464: Dat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[112]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">metricas</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
     <span class="n">ACC</span> <span class="o">=</span> <span class="p">(</span><span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">lista</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">lista</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">lista</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">lista</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-    <span class="n">ERR</span> <span class="o">=</span> <span class="n">ACC</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">ERR</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">ACC</span>
     <span class="n">TPR</span> <span class="o">=</span> <span class="n">lista</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">lista</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">lista</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
     <span class="c1">#TPR = SEN (sensibilidad) = REC (recall=recuperacion)</span>
     <span class="n">FPR</span> <span class="o">=</span> <span class="n">lista</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">lista</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
@@ -12964,6 +12964,24 @@ Valor óptimo para gamma: 20
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[104]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">f_importances</span><span class="p">(</span><span class="n">coef</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
+    <span class="n">imp</span> <span class="o">=</span> <span class="n">coef</span>
+    <span class="n">imp</span><span class="p">,</span><span class="n">names</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">imp</span><span class="p">,</span><span class="n">names</span><span class="p">)))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)),</span> <span class="n">imp</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)),</span> <span class="n">names</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -12999,7 +13017,7 @@ Valor óptimo para gamma: 20
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[113]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">matrizConfusionValores</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predsSVCGS</span><span class="p">)</span>
@@ -13033,7 +13051,7 @@ Falsos Negativos: 559
 
 
 Accuracy: 58.252427184466015
-Misclassification error: -41.747572815533985
+Misclassification error: 41.747572815533985
 True Positive Rate/Recall/Sensitivity: 0.0
 False Positive Rate: 0.0
 Precision: nan
@@ -13049,8 +13067,8 @@ F1 score: nan
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>C:\Users\Maria Jose- Javier\Anaconda3\lib\site-packages\ipykernel_launcher.py:8: RuntimeWarning: invalid value encountered in longlong_scalars
-  
+<pre>C:\Users\Maria Jose- Javier\Anaconda3\lib\site-packages\ipykernel_launcher.py:7: RuntimeWarning: invalid value encountered in longlong_scalars
+  import sys
 </pre>
 </div>
 </div>
@@ -13436,7 +13454,7 @@ Valor óptimo para n_estimators: 102
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[114]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">matrizConfusionValores</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predsGBGS</span><span class="p">)</span>
@@ -13470,7 +13488,7 @@ Falsos Negativos: 146
 
 
 Accuracy: 75.95220313666916
-Misclassification error: -24.047796863330838
+Misclassification error: 24.047796863330838
 True Positive Rate/Recall/Sensitivity: 73.8819320214669
 False Positive Rate: 22.564102564102566
 Precision: 70.11884550084889
@@ -13849,7 +13867,7 @@ Valor óptimo para n_estimators: 107
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[115]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">matrizConfusionValores</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predsABCGS</span><span class="p">)</span>
@@ -13883,7 +13901,7 @@ Falsos Negativos: 168
 
 
 Accuracy: 76.32561613144138
-Misclassification error: -23.674383868558625
+Misclassification error: 23.674383868558625
 True Positive Rate/Recall/Sensitivity: 69.94633273703042
 False Positive Rate: 19.102564102564102
 Precision: 72.4074074074074
@@ -14272,7 +14290,7 @@ Valor óptimo para n_estimators: 200
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="prompt input_prompt">In&nbsp;[116]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">matrizConfusionValores</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predsRFGS</span><span class="p">)</span>
@@ -14306,7 +14324,7 @@ Falsos Negativos: 167
 
 
 Accuracy: 75.65347274085138
-Misclassification error: -24.34652725914862
+Misclassification error: 24.34652725914862
 True Positive Rate/Recall/Sensitivity: 70.12522361359571
 False Positive Rate: 20.384615384615383
 Precision: 71.14337568058076
@@ -14667,7 +14685,7 @@ Precisión en el conjunto de test: 60.34%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="prompt input_prompt">In&nbsp;[117]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">matrizConfusionValores</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predsGNBGS</span><span class="p">)</span>
@@ -14701,7 +14719,7 @@ Falsos Negativos: 42
 
 
 Accuracy: 60.34353995519044
-Misclassification error: -39.65646004480956
+Misclassification error: 39.65646004480956
 True Positive Rate/Recall/Sensitivity: 92.4865831842576
 False Positive Rate: 62.69230769230769
 Precision: 51.39165009940358
@@ -14758,7 +14776,6 @@ F1 score: 66.07028753993609
 <span class="n">LGRS</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">LG</span><span class="p">,</span> <span class="n">param_distributions</span> <span class="o">=</span> <span class="n">parametrosLGRS</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="n">LGRS</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="c1"># lbfgs</span>
 </pre></div>
 
 </div>
@@ -15444,7 +15461,7 @@ Valor óptimo para C: 0.16
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[93]:</div>
+<div class="prompt input_prompt">In&nbsp;[118]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">matrizConfusionValores</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predsLGGS</span><span class="p">)</span>
@@ -15478,7 +15495,7 @@ Falsos Negativos: 196
 
 
 Accuracy: 73.41299477221807
-Misclassification error: -26.587005227781923
+Misclassification error: 26.587005227781923
 True Positive Rate/Recall/Sensitivity: 64.93738819320215
 False Positive Rate: 20.51282051282051
 Precision: 69.40726577437859
@@ -15727,7 +15744,7 @@ Valor óptimo para weights: distance
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[100]:</div>
+<div class="prompt input_prompt">In&nbsp;[119]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">matrizConfusionValores</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predsKNNGS</span><span class="p">)</span>
@@ -15761,7 +15778,7 @@ Falsos Negativos: 230
 
 
 Accuracy: 67.06497386109037
-Misclassification error: -32.93502613890963
+Misclassification error: 32.93502613890963
 True Positive Rate/Recall/Sensitivity: 58.85509838998211
 False Positive Rate: 27.05128205128205
 Precision: 60.92592592592593
